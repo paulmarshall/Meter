@@ -17,7 +17,7 @@ Markup is simple:
             <div class="dial"> 
                 <span data-bind='text: reading'></span>
                 <!-- ko foreach: digits -->
-                    <input data-bind='digitInput, css: css, value: value, valueUpdate: "afterkeydown"' maxlength="1"/>
+                    <input data-bind='digitInput, css: css, value: value, valueUpdate: "afterkeydown"'/>
                 <!-- /ko -->
             </div>
         </div>    
