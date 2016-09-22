@@ -1,1 +1,35 @@
 # Meter
+
+An example of a electric/gas meter implemented in Knockout/javascript.
+
+Simple simple HTML markup, binds to a view model, Meter. Meter is comprised of a number of Dials (as a meter can support both single and dual tarrifs). A Dial is made up of a numbe rof Digits.
+
+Markup is simple:
+
+```HTML
+        <div id="meter" data-bind='foreach: dials'>
+            <div class="dial"> 
+                <span data-bind='text: reading'></span>
+                <!-- ko foreach: digits -->
+                    <input data-bind='digitInput, css: css, value: value, valueUpdate: "afterkeydown"' maxlength="1"/>
+                <!-- /ko -->
+            </div>
+        </div>    
+```
+
+View model is even simpler:
+```javascript
+        <script>
+        $(function() {
+            var meter = new Meter(5,1,2);
+            ko.applyBindings(meter, $("#meter")[0]); 
+        });
+        </script>   
+```
+
+Meter takes 3 arguments:
+* Count of digits to the left of the decimal point
+* Count of digits to the right of the decimal point
+* Number of dials
+
+The readings are
