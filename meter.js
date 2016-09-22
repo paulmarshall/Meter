@@ -1,6 +1,8 @@
 ko.bindingHandlers.digitInput = {
     init: function (element, valueAccessor) {
-        $(element).on("keydown", function (event) {
+        $(element)
+        .attr("maxlength", "1")
+        .on("keydown", function (event) {
             // Allow: backspace, delete, tab, escape, and enter
             if (event.keyCode == 46 || event.keyCode == 8 || event.keyCode == 9 || event.keyCode == 27 || event.keyCode == 13 ||
                 // Allow: Ctrl+A
@@ -18,7 +20,8 @@ ko.bindingHandlers.digitInput = {
                     event.preventDefault();
                 }
             }
-        }).bind("input", function() {
+        })
+        .bind("input", function() {
                     var $this = $(this);
                     setTimeout(function() {
                         if ( $this.val().length >= parseInt($this.attr("maxlength"),10) )
@@ -26,29 +29,6 @@ ko.bindingHandlers.digitInput = {
                     },0);
     });        
     }
-};
-
-ko.extenders.maxLength = function (target, maxLength) {
-    var result = ko.computed({
-        read: target,
-        write: function (val) {
-            if (val && maxLength > 0) {
-                if (val.length > maxLength) {
-                    var limitedVal = val.substring(0, maxLength);
-                    if (target() === limitedVal) {
-                        target.notifySubscribers();
-                    }
-                    else {
-                        target(limitedVal);
-                    }
-                }
-                else { target(val); }
-            }
-            else { target(val); }
-        }
-    }).extend({ notify: 'always' });
-    result(target());
-    return result;
 };
 
 var Meter = function(digitsLeftOfDP,digitsRightOfDP,countOfDials) {
