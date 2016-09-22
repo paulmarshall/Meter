@@ -32,4 +32,4 @@ Meter takes 3 arguments:
 * Count of digits to the right of the decimal point
 * Number of dials
 
-The readings are
+Meter makes available readings from each of it's dials. If an entry is invalid, an "x" is displayed.
