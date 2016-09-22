@@ -1,6 +1,12 @@
 # Meter
 
-An example of a electric/gas meter implemented in Knockout/javascript.
+An example of a electric/gas meter implemented in javascript.
+
+Stack:
+* VS Code
+* GitHub for Windows
+* javascript
+* jQuery 2.1.0 / knockout 3.0.0
 
 Simple simple HTML markup, binds to a view model, Meter. Meter is comprised of a number of Dials (as a meter can support both single and dual tarrifs). A Dial is made up of a numbe rof Digits.
 
@@ -33,3 +39,5 @@ Meter takes 3 arguments:
 * Number of dials
 
 Meter makes available readings from each of it's dials. If an entry is invalid, an "x" is displayed.
+
+The input fields restrict entry to one numeric character. Once entered, focus moves to the next field.
