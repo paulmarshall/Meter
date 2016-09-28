@@ -23,7 +23,9 @@ ko.bindingHandlers.digitInput = {
                     var $this = $(this);
                     setTimeout(function() {
                         if ( $this.val().length >= parseInt($this.attr("maxlength"),10) )
-                            $this.next("input").focus();
+                            $this.next("input")
+                                 .focus()
+                                 .select();
                     },0);
     });        
     }
