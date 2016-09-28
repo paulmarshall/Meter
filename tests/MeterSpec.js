@@ -90,4 +90,44 @@ describe("Meter", function() {
     expect(digits[1].css()).toBe("right");
   });  
 
+  it("should throw exception if number of integer digits is 0", function() {
+
+    var zeroIntegerDigits = function() { new Meter(0,0,1)};
+
+    expect(zeroIntegerDigits).toThrowError("Integer digit count invalid");
+
+  });
+
+  it("should throw exception if number of integer digits is less than 0", function() {
+
+    var negativeIntegerDigits = function() { new Meter(-1,0,1)};
+
+    expect(negativeIntegerDigits).toThrowError("Integer digit count invalid");
+
+  });
+
+  it("should throw exception if number of fractional digits is less than 0", function() {
+
+    var negativeFractionalDigits = function() { new Meter(1,-10,1)};
+
+    expect(negativeFractionalDigits).toThrowError("Fractional digit count invalid");
+
+  });  
+
+  it("should throw exception if number of dials digits is 0", function() {
+
+    var zeroDials = function() { new Meter(1,0,0)};
+
+    expect(zeroDials).toThrowError("Dial count invalid");
+
+  });
+
+  it("should throw exception if number of dials digits is less than 0", function() {
+
+    var negativeDials = function() { new Meter(1,0,-1)};
+
+    expect(negativeDials).toThrowError("Dial count invalid");
+
+  });  
+
 });

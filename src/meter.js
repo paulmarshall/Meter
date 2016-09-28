@@ -32,6 +32,22 @@ ko.bindingHandlers.digitInput = {
 };
 
 var Meter = function(digitsLeftOfDP,digitsRightOfDP,countOfDials) {
+    
+    if (digitsLeftOfDP < 1)
+    {
+        throw new Error("Integer digit count invalid");
+    }
+
+    if (digitsRightOfDP < 0)
+    {
+        throw new Error("Fractional digit count invalid");
+    }
+
+    if (countOfDials < 1)
+    {
+        throw new Error("Dial count invalid");
+    }
+    
     var self = this;
 
     self.dials = ko.observableArray();
